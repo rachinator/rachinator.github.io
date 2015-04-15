@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Open+Sans:400,700">
+	<link rel="stylesheet" href="{{ '/css/reset.css' | prepend: site.baseurl }}">
+	<link rel="stylesheet" href="{{ '/css/global.css' | prepend: site.baseurl }}">
+</head>
+<body>
+	<header>
+		<h1><a href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a></h1>
+		<nav>
+			{% assign sorted_pages = (site.pages | sort: 'order') %}
+			{% for page in sorted_pages %}
+				{% if page.title %}
+					<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+				{% endif %}
+			{% endfor %}
+		</nav>
+	</header>
+	<section class="clearfix">
+		{{ content }}
+	</section>
+	<footer>
+		&copy; 2015 <strong>Rachel Wellborn</strong>. All Rights Reserved. &hearts;
+	</footer>
+</body>
+</html>
