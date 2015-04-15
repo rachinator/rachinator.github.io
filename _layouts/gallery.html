@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{{ content }}
+{% for image in site.data[page.set] %}
+	<div class="clearfix">
+		<figure>
+			<img src="{{ image.url }}">
+			<figcaption>{{ image.title }}</figcaption>
+		</figure>
+	</div>
+{% endfor %}
